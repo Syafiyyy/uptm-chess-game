@@ -1,0 +1,2 @@
+C:/Users/AdamSyafi/Desktop/uptm_chess/android/app/.cxx/RelWithDebInfo/59o4e2u6/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/AdamSyafi/Desktop/uptm_chess/android/app/.cxx/RelWithDebInfo/59o4e2u6/armeabi-v7a/CMakeFiles/rebuild_cache.dir

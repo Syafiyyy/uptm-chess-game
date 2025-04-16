@@ -1,0 +1,48 @@
+{
+  "rules": {
+    "games": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$gameId": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        "whitesTime": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        "blacksTime": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        "moves": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        "positonFen": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        "whitsCurrentMove": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        "blacksCurrentMove": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        "isWhitesTurn": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        "isGameOver": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        "winnerId": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow anyone to create a new username if it doesn't exist
+    match /usernames/{username} {
+      allow read: if true;
+      allow create: if !exists(/databases/$(database)/documents/usernames/$(username));
+    }
+    
+    // Allow users to read/write their own documents
+    match /users/{userId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update: if request.auth != null && request.auth.uid == userId;
+      
+      // Allow users to read their own data and write to their own collections
+      match /{collection}/{docId} {
+        allow read: if request.auth != null;
+        allow write: if request.auth != null && request.auth.uid == userId;
+      }
+      
+      // Special rule for friend requests - allow other users to write to a user's friendRequests collection
+      match /friendRequests/{requesterId} {
+        allow read: if request.auth != null && request.auth.uid == userId;
+        allow write: if request.auth != null && (
+          // Allow the user to manage their own friend requests
+          request.auth.uid == userId || 
+          // Allow other users to send friend requests
+          request.auth.uid == requesterId
+        );
+      }
+      
+      // Special rule for friends collection - allow other users to write to a user's friends collection
+      match /friends/{friendId} {
+        allow read: if request.auth != null && (request.auth.uid == userId || request.auth.uid == friendId);
+        allow write: if request.auth != null && (
+          // Allow the user to manage their own friends
+          request.auth.uid == userId || 
+          // Allow the friend to write to the user's friends collection
+          request.auth.uid == friendId
+        );
+      }
+    }
+    
+    // Rules for online games
+    match /availableGames/{gameId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+    
+    // Rules for game history
+    match /gameHistory/{historyId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+    
+    // Rules for active games
+    match /activeGames/{gameId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+    
+    // Rules for game moves
+    match /gameMoves/{moveId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+  }
+}

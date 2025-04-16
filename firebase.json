@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"uptm-chess","appId":"1:1004993425334:android:6df33d66902f6cb81f9b17","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"uptm-chess","configurations":{"android":"1:1004993425334:android:6df33d66902f6cb81f9b17","ios":"1:1004993425334:ios:abec9bc78234db671f9b17"}}}}}}
